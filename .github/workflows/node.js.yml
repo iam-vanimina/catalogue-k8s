@@ -43,7 +43,7 @@ jobs:
           echo "Running lint"
           npm run lint || true
           echo "Running security scan"
-          npm audit fix --force || true
+          npm audit  || true
 
   deploy_dev:
     if: github.ref == 'refs/heads/develop'
