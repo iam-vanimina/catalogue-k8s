@@ -50,6 +50,7 @@ jobs:
 
   docker-build:
     runs-on: ubuntu-latest
+    needs: [build,unit_tests, lint_and_scan]
 
     permissions:
       contents: read
