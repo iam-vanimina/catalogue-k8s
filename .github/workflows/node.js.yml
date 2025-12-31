@@ -3,6 +3,7 @@ name: Industrial CI Pipeline
 on:
   pull_request:
     branches: [develop, main]
+    tags: [ "v*" ]
   push:
     branches:
       - develop
