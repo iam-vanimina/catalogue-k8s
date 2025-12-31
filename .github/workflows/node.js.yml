@@ -91,7 +91,7 @@ jobs:
 
       # 🔍 Trivy scan
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@v0.24.1
+        uses: aquasecurity/trivy-action@v2.330.0
         with:
           image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
           format: table
