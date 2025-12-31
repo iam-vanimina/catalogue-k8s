@@ -16,5 +16,9 @@
     "express-pino-logger": "^4.0.0",
     "pino-pretty": "^2.5.0",
     "@instana/collector": "^1.132.2"
-  }
+  },
+  "scripts": {
+  "build": "echo 'No build step necessary'",
+  "test": "echo \"Error: no test specified\" && exit 1"
+}
 }
