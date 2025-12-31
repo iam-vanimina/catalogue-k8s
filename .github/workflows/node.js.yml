@@ -31,7 +31,7 @@ jobs:
       - name: Run unit tests
         run: |
           echo "Running unit tests"
-          ./gradlew test || npm test
+          npm test ##./gradlew test ||
 
   lint_and_scan:
     runs-on: ubuntu-latest
