@@ -41,6 +41,7 @@ jobs:
       - name: Lint & security scan
         run: |
           echo "Running lint"
+          npm run
           npm run lint || true
           echo "Running security scan"
           npm audit || true
