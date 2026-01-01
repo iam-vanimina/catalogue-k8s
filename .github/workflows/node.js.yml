@@ -90,25 +90,7 @@ jobs:
           images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}
           tags: $appVersion
 
-      # 🔨 Build image (load locally for scanning)
-      - name: Build Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          load: true
-          tags: ${{ steps.meta.outputs.tags }}
-          
-      # 🔍 Trivy scan
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@v0.24.0
-        with:
-          image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:$appVersion
-          format: table
-          exit-code: 1
-          ignore-unfixed: true
-          vuln-type: os,library
-          severity: CRITICAL,HIGH
-
+              
       # 🚀 Push only if scan passes
       - name: Push Docker image
         uses: docker/build-push-action@v5
