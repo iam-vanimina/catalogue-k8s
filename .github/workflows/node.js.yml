@@ -50,6 +50,7 @@ jobs:
           npm audit  || true
   App-version:
       runs-on: ubuntu-latest
+      needs: [unit_tests, lint_and_scan,build]
       steps:
        - uses: actions/checkout@v4
        - name: APP version package.json
