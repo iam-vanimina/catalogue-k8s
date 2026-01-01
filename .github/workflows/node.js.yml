@@ -83,11 +83,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}
-          tags: |
-            type=ref,event=branch
-            type=ref,event=tag
-            type=sha
-            type=raw,value=$appVersion,enable={{is_default_branch}}
+          tags: $appVersion
 
       # 🔨 Build image (load locally for scanning)
       - name: Build Docker image
@@ -95,10 +91,8 @@ jobs:
         with:
           context: .
           load: true
-          tags: $appVersion
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
+          tags: ${{ steps.meta.outputs.tags }}
+          
       # 🔍 Trivy scan
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@v0.24.0
@@ -116,7 +110,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: $appVersion   
+          tags: ${{ steps.meta.outputs.tags }}   
    
   deploy_dev:
     if: github.ref == 'refs/heads/develop'
