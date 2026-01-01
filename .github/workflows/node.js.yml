@@ -14,7 +14,7 @@ on:
       - bugfix/*
 env:
   IMAGE_NAME: catalogue
-  appVersion:  ''
+  #appVersion:  ''
 
 jobs:
   build:
