@@ -59,7 +59,7 @@ jobs:
            echo "Version is: $appVersion"
 
   docker-build:
-     name: Build
+     name: docker-build
      runs-on: ubuntu-24.04
      needs: [build,unit_tests, lint_and_scan]
      steps:
