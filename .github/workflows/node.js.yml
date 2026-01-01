@@ -89,8 +89,7 @@ jobs:
         with:
           images: ${{secrets.DOCKERHUB_USERNAME}}/${{env.IMAGE_NAME}}
           tags: $appVersion
-
-              
+  
       # 🚀 Push only if scan passes
       - name: Push Docker image
         uses: docker/build-push-action@v5
