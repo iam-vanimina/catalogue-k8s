@@ -66,11 +66,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Build an image from Dockerfile
-        run: docker build -t vvram143/${{IMAGE_NAME}}:${{ appVersion }} .
+        run: docker build -t vvram143/${{IMAGE_NAME}}:${{appVersion}} .
+
+ 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.33.1
         with:
-          image-ref: 'vvram143/${{IMAGE_NAME}}:${{ appVersion }}'
+          image-ref: 'vvram143/${{IMAGE_NAME}}:${{appVersion}}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
