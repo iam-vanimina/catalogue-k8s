@@ -111,7 +111,7 @@ jobs:
   deploy_dev:
     if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
-    needs: [unit_tests, lint_and_scan]
+    needs: [unit_tests, lint_and_scan,docker-build]
     steps:
       - name: Deploy to DEV
         run: echo "Deploying to DEV environment"
@@ -119,7 +119,7 @@ jobs:
   deploy_uat:
     if: startsWith(github.ref, 'refs/heads/release/')
     runs-on: ubuntu-latest
-    needs: [unit_tests, lint_and_scan]
+    needs: [unit_tests, lint_and_scan,docker-build]
     steps:
       - name: Deploy to UAT
         run: echo "Deploying to UAT environment"
@@ -127,7 +127,7 @@ jobs:
   deploy_prod:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    needs: [unit_tests, lint_and_scan]
+    needs: [unit_tests, lint_and_scan,docker-build]
     steps:
       - name: Deploy to PROD
         run: echo "Deploying to PRODUCTION"
